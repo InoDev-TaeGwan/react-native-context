@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import styled from "styled-components/native";
 
-import {UserConsumer} from '../contexts/user';
+import UserContext from '../contexts/user';
 
 const StyledInput = styled.TextInput`
   border: 1px solid #606060;
@@ -13,10 +13,8 @@ const StyledInput = styled.TextInput`
 
 const Input = () => {
     const [name,setName] = useState('');
+    const {dispatch} = useContext(UserContext);
     return (
-        <UserConsumer>
-            {({dispatch})=> {
-                return(
                     <StyledInput
                         value={name}
                         onChangeText={text => setName(text)}
@@ -29,9 +27,6 @@ const Input = () => {
                         autoCorrect={false}
                         returnKeyType="done"
                     />
-                )
-            }}
-        </UserConsumer>
     );
 };
 

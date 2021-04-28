@@ -21,7 +21,6 @@ const App = () => {
                 <User />
                 <Input />
             </Container>
-
         </UserProvider>
 
     );
